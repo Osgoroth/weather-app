@@ -18,7 +18,7 @@ function classNames(...classes) {
 }
 export default function DetailedInfo({ weather }) {
   return (
-    <div className="w-full">
+    <div className="w-full h-full sm:h-72">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-gray-300 bg-opacity-25 p-1">
           {Object.keys(tabs).map((tab) => {
@@ -27,7 +27,7 @@ export default function DetailedInfo({ weather }) {
                 key={tab}
                 className={({ selected }) =>
                   classNames(
-                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white",
+                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white flex-grow",
                     "ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2",
                     selected
                       ? "bg-gray-900  bg-opacity-10 shadow text-gray-800"
@@ -40,19 +40,21 @@ export default function DetailedInfo({ weather }) {
             );
           })}
         </Tab.List>
-        <Tab.Panels className="mt-2 h-auto">
+        <Tab.Panels className="mt-2 flex-grow sm:h-[232px]">
           {Object.values(tabs).map((values) => (
             <Tab.Panel
               key={values}
               className={classNames(
-                "rounded-xl bg-gray-300 bg-opacity-25 p-3 h-full",
+                "rounded-lg bg-gray-300 bg-opacity-25 p-3 h-full",
                 "ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2"
               )}
             >
+              {/* // TODO: find a non-hardcoded solution */}
+
               {values.map(([title, value]) => {
                 {
                   return (
-                    <p key={value}>
+                    <p key={value} className="h-6">
                       {title}: {weather?.current[value]}
                     </p>
                   );

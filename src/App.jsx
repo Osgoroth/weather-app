@@ -38,7 +38,7 @@ function App() {
             <Loading />
           ) : (
             weather && (
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex flex-col sm:flex-row gap-2 sm:h-72">
                 <BasicInfo weather={weather} />
                 <DetailedInfo weather={weather} />
               </div>
