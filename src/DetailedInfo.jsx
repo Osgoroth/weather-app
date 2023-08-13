@@ -49,7 +49,7 @@ export default function DetailedInfo({ weather }) {
                 "ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2"
               )}
             >
-              {/* // TODO: find a non-hardcoded solution */}
+              {/* // TODO: find a non-hardcoded */}
 
               {values.map(([title, value]) => {
                 {
