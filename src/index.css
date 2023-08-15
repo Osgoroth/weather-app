@@ -6,3 +6,12 @@ body {
   background-color: #0093e9;
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
+
+@layer components {
+  .btn {
+    @apply flex-shrink-0 rounded-md bg-gray-600 hover:bg-gray-300 hover:text-gray-800 flex justify-center items-center focus:ring ring-white ring-opacity-60 ring-offset-gray-400 focus:ring-offset-2;
+  }
+  .btn--small {
+    @apply h-8 w-8;
+  }
+}

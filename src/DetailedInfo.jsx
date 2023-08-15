@@ -2,14 +2,14 @@ import { Tab } from "@headlessui/react";
 
 const tabs = {
   Wind: [
-    ["Speed (mph)", "wind_mph"],
+    ["Speed", "wind_mph", "mph"],
     ["Direction", "wind_dir"],
-    ["Pressure", "pressure_mb"],
+    ["Pressure", "pressure_mb", "hPa"],
   ],
   Rain: [
-    ["Precipitation", "precip_mm"],
-    ["Humidity", "humidity"],
-    ["Cloud cover", "cloud"],
+    ["Precipitation", "precip_mm", "mm"],
+    ["Humidity", "humidity", "%"],
+    ["Cloud cover", "cloud", "%"],
   ],
 };
 
@@ -18,7 +18,7 @@ function classNames(...classes) {
 }
 export default function DetailedInfo({ weather }) {
   return (
-    <div className="w-full h-full sm:h-72">
+    <div className="w-80 sm:w-[320px] h-min sm:h-72">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-gray-300 bg-opacity-25 p-1">
           {Object.keys(tabs).map((tab) => {
@@ -27,7 +27,7 @@ export default function DetailedInfo({ weather }) {
                 key={tab}
                 className={({ selected }) =>
                   classNames(
-                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white flex-grow",
+                    "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white",
                     "ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2",
                     selected
                       ? "bg-gray-900  bg-opacity-10 shadow text-gray-800"
@@ -51,11 +51,12 @@ export default function DetailedInfo({ weather }) {
             >
               {/* // TODO: find a non-hardcoded */}
 
-              {values.map(([title, value]) => {
+              {values.map(([title, value, unit]) => {
                 {
                   return (
                     <p key={value} className="h-6">
                       {title}: {weather?.current[value]}
+                      {unit}
                     </p>
                   );
                 }
