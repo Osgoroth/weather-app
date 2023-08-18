@@ -1,6 +1,6 @@
 export default function BasicInfo({ weather }) {
   return (
-    <div className="w-80 sm:w-[320px] bg-gray-300 bg-opacity-25 h-72 flex flex-col justify-center items-center rounded-lg p-3">
+    <div className="w-full sm:w-[320px] bg-gray-300 bg-opacity-25 h-72 flex flex-col justify-center items-center rounded-lg p-3">
       <div className="text-2xl sm:text-4xl text-center w-full">
         <p className="truncate max-w-xs">{weather?.location.name}</p>
       </div>

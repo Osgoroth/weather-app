@@ -18,7 +18,7 @@ function classNames(...classes) {
 }
 export default function DetailedInfo({ weather }) {
   return (
-    <div className="w-80 sm:w-[320px] h-min sm:h-72">
+    <div className="w-full sm:w-[320px] h-min sm:h-72">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-gray-300 bg-opacity-25 p-1">
           {Object.keys(tabs).map((tab) => {
