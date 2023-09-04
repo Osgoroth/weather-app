@@ -1,6 +1,7 @@
 # Simple Weather App
 
-![Screen Shot 2023-08-11 at 18 46 39](https://github.com/Osgoroth/weather-app/assets/46662617/bc672163-7c6a-4dc7-85da-7fd3d4cb8baa)
+![Screen Shot 2023-08-18 at 14 41 53](https://github.com/Osgoroth/weather-app/assets/46662617/10d94788-2121-4ca8-b93b-68236afabe9e)
+
 
 # React + Vite
 
