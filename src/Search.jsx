@@ -38,12 +38,18 @@ export default function SearchBox({ getWeather, resetWeather }) {
 
   function getLocationWeather(e) {
     e.preventDefault();
-    navigator.geolocation.getCurrentPosition((data) => {
-      // console.log(data);
-      const latLong = `${data.coords.latitude},${data.coords.longitude}`;
+    navigator.geolocation.getCurrentPosition(
+      (data) => {
+        // console.log(data);
+        const latLong = `${data.coords.latitude},${data.coords.longitude}`;
 
-      getWeather(latLong);
-    });
+        getWeather(latLong);
+      },
+      (err) => {
+        console.log(err);
+        alert("You must enable location sharing for thi feature to work");
+      }
+    );
   }
 
   return (
