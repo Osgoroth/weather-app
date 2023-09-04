@@ -1,9 +1,13 @@
-import { FaMagnifyingGlass, FaArrowLeft } from "react-icons/fa6";
+import {
+  FaMagnifyingGlass,
+  FaArrowLeft,
+  FaLocationCrosshairs,
+} from "react-icons/fa6";
 import { useState } from "react";
 import propTypes from "prop-types";
 // TODO: add form validation
 export default function SearchBox({ getWeather, resetWeather }) {
-  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
   const [isValid, setIsValid] = useState(true);
 
   function handleKeyDown(e) {
@@ -15,26 +19,39 @@ export default function SearchBox({ getWeather, resetWeather }) {
   }
 
   function handleCityChange(e) {
-    setCity(e.target.value);
+    setLocation(e.target.value);
     setIsValid(true);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const regex = new RegExp("^[A-Za-z]+$");
-    const result = regex.test(city);
+    const result = regex.test(location);
     if (!result) {
       setIsValid(false);
       // console.log(result);
       return;
     }
 
-    isValid && getWeather(city);
+    isValid && getWeather(location);
+  }
+
+  function getLocationWeather(e) {
+    e.preventDefault();
+    navigator.geolocation.getCurrentPosition((data) => {
+      // console.log(data);
+      const latLong = `${data.coords.latitude},${data.coords.longitude}`;
+
+      getWeather(latLong);
+    });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <div className="flex flex-row justify-between w-full">
+        <button className="btn btn--small  mr-1" onClick={getLocationWeather}>
+          <FaLocationCrosshairs />
+        </button>
         <input
           className={`bg-gray-600 bg-opacity-25 p-3 h-8 rounded-md w-full outline-none focus:ring-2 ${
             isValid ? "ring-white" : "ring-red-500"
@@ -42,18 +59,23 @@ export default function SearchBox({ getWeather, resetWeather }) {
           placeholder="Enter City..."
           onChange={handleCityChange}
           onKeyDown={handleKeyDown}
-          value={city}
+          value={location}
           type="text"
-          required
           pattern="[A-Za-z]+"
         ></input>
-        <button className="btn btn--small  ml-1" type="submit">
+        <button
+          className="btn btn--small  ml-1"
+          type="submit"
+          onClick={handleSubmit}
+        >
           <FaMagnifyingGlass />
         </button>
+
         <button
           className="btn btn--small ml-1"
+          type="reset"
           onClick={() => {
-            setCity("");
+            setLocation("");
             resetWeather();
           }}
         >

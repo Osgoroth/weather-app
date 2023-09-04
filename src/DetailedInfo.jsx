@@ -1,4 +1,5 @@
 import { Tab } from "@headlessui/react";
+import propTypes from "prop-types";
 
 const tabs = {
   Wind: [
@@ -17,6 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function DetailedInfo({ weather }) {
+  // const {} = weather;
   return (
     <div className="w-full sm:w-[320px] h-min sm:h-72">
       <Tab.Group>
@@ -68,3 +70,7 @@ export default function DetailedInfo({ weather }) {
     </div>
   );
 }
+
+DetailedInfo.propTypes = {
+  weather: propTypes.object.isRequired,
+};
