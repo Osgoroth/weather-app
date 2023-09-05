@@ -16,7 +16,6 @@ function App() {
 
   async function getWeather(location) {
     console.time("fetching weather");
-    
 
     fetch(
       `https://api.weatherapi.com/v1/current.json?key=7a85bb5baaf54da3b0f82908231108&q=${location}&aqi=no`
@@ -75,12 +74,16 @@ function App() {
               )
             ))}
         </div>
-      </div>
-      <div>
-        Powered by{" "}
-        <a href="https://www.weatherapi.com/" title="Free Weather API">
-          WeatherAPI.com
-        </a>
+        <div className="absolute bottom-0 text-gray-500">
+          Powered by
+          <a
+            href="https://www.weatherapi.com/"
+            title="Free Weather API"
+            className="hover:underline "
+          >
+            WeatherAPI.com
+          </a>
+        </div>
       </div>
     </>
   );
