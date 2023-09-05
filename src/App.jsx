@@ -75,7 +75,7 @@ function App() {
             ))}
         </div>
         <div className="absolute bottom-0 text-gray-500">
-          Powered by
+          Powered by{" "}
           <a
             href="https://www.weatherapi.com/"
             title="Free Weather API"
